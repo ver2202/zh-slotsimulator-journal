@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老虎机模拟器 · 简明指南与使用提醒</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #faf6f0;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            color: #2c2c2c;
+            line-height: 1.65;
+            padding: 2rem 1.2rem;
+        }
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            background: #fffcf8;
+            border-radius: 28px;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04), 0 3px 8px rgba(0, 0, 0, 0.02);
+            padding: 2.8rem 2.2rem;
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            color: #3b3b3b;
+            border-left: 5px solid #c9a96e;
+            padding-left: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .subhead {
+            color: #6f6f6f;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            border-bottom: 1px solid #e7dfd3;
+            padding-bottom: 0.8rem;
+        }
+        .intro-box {
+            background: #f3ede5;
+            padding: 1.5rem 1.8rem;
+            border-radius: 16px;
+            margin: 1.8rem 0 2.2rem 0;
+            font-size: 0.98rem;
+        }
+        .intro-box strong {
+            color: #7d5f3b;
+        }
+        .grid-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 2.2rem 0;
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid #ece4d8;
+            border-radius: 18px;
+            padding: 1.6rem 1.4rem;
+            transition: box-shadow 0.15s, transform 0.1s;
+        }
+        .card:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 540;
+            color: #4e3f2c;
+            margin-bottom: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .card p {
+            font-size: 0.93rem;
+            color: #444;
+            margin-bottom: 0.3rem;
+        }
+        .card ul {
+            padding-left: 1.2rem;
+            margin: 0.5rem 0 0;
+            font-size: 0.92rem;
+            color: #3e3e3e;
+        }
+        .card ul li {
+            margin-bottom: 0.3rem;
+        }
+        .notice-block {
+            background: #faf1e6;
+            border-left: 6px solid #c9a96e;
+            padding: 1.3rem 1.6rem;
+            border-radius: 0 14px 14px 0;
+            margin: 1.8rem 0;
+        }
+        .notice-block p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .notice-block strong {
+            color: #7a5f3a;
+        }
+        .faq-mini {
+            background: #ffffff;
+            border: 1px solid #e5dbce;
+            border-radius: 18px;
+            padding: 1.5rem 1.8rem;
+            margin: 2rem 0 1.2rem;
+        }
+        .faq-mini h4 {
+            font-size: 1.05rem;
+            font-weight: 530;
+            color: #4a3d2d;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed #dacfc0;
+            padding-bottom: 0.5rem;
+        }
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+        .faq-item .q {
+            font-weight: 530;
+            color: #3a2f21;
+            font-size: 0.97rem;
+        }
+        .faq-item .a {
+            margin-top: 0.15rem;
+            color: #555;
+            font-size: 0.92rem;
+        }
+        .link-sentence {
+            background: #f7f1e9;
+            padding: 1rem 1.4rem;
+            border-radius: 40px;
+            margin: 2rem 0 0.8rem;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .link-sentence a {
+            color: #7a5f3a;
+            font-weight: 530;
+            text-decoration: none;
+            border-bottom: 2px solid #dac0a0;
+            padding-bottom: 1px;
+            transition: border-color 0.15s;
+        }
+        .link-sentence a:hover {
+            border-bottom-color: #7a5f3a;
+        }
+        .footer-note {
+            margin-top: 2.4rem;
+            font-size: 0.85rem;
+            color: #888;
+            text-align: center;
+            border-top: 1px solid #e5dbce;
+            padding-top: 1.5rem;
+        }
+        @media (max-width: 640px) {
+            body { padding: 1rem 0.8rem; }
+            .container { padding: 1.6rem 1.2rem; }
+            h1 { font-size: 1.6rem; padding-left: 0.7rem; }
+            .grid-sections { grid-template-columns: 1fr; gap: 1.2rem; }
+            .card { padding: 1.2rem 1rem; }
+            .intro-box { padding: 1.2rem; }
+            .notice-block { padding: 1rem 1.2rem; }
+            .faq-mini { padding: 1.2rem; }
+            .link-sentence { font-size: 0.93rem; }
+        }
+        @media (max-width: 400px) {
+            .container { padding: 1rem; }
+            h1 { font-size: 1.4rem; }
+            .card h3 { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>老虎机模拟器</h1>
+        <div class="subhead">简明指南 · 使用提醒 · 知识库入口</div>
+
+        <div class="intro-box">
+            <strong>高效上手 · 明确边界</strong><br>
+            本页面围绕 <a href="https://zh-slotsimulator.com" style="color:#7d5f3b; text-decoration:underline; text-underline-offset:2px;">老虎机模拟器</a> 整理核心信息，帮助新用户快速建立操作认知，同时指出模拟环境与真实机台的差异。内容偏重逻辑结构，适合作为知识库的起始索引页。
+        </div>
+
+        <div class="grid-sections">
+            <div class="card">
+                <h3>⚙️ 操作要点</h3>
+                <p>了解基本界面与参数调节方法：</p>
+                <ul>
+                    <li>下注线数、单线面额独立调节</li>
+                    <li>自动旋转与快速模式切换</li>
+                    <li>赔付表与符号组合查阅</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>🧩 模拟场景</h3>
+                <p>适用于策略验证、机制学习与娱乐体验：</p>
+                <ul>
+                    <li>不同 RTP 环境下的资金曲线</li>
+                    <li>免费旋转触发频率观察</li>
+                    <li>多轮数统计与波动感知</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>📌 使用提醒</h3>
+                <p>模拟器不等于真实机台，请注意：</p>
+                <ul>
+                    <li>所有结果基于伪随机算法</li>
+                    <li>不涉及真实货币或奖品</li>
+                    <li>不反映赌场实际返还率</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>📚 相关信息</h3>
+                <p>延伸阅读方向与参考资源：</p>
+                <ul>
+                    <li>常见术语解释（赔付线、累积奖池）</li>
+                    <li>模拟器版本更新日志</li>
+                    <li>第三方机制分析文章索引</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="notice-block">
+            <p><strong>⚠️ 访问提醒</strong></p>
+            <p>• 本模拟器仅用作个人学习与参考，不提供任何形式的博彩服务。<br>
+            • 建议每次使用前确认浏览器版本与隐私设置，避免缓存导致的显示异常。<br>
+            • 若需要参考具体游戏逻辑，请以机台官方文档为准。模拟器开发者不对因理解偏差产生的决策负责。</p>
+        </div>
+
+        <div class="faq-mini">
+            <h4>❓ 常见问题摘要</h4>
+            <div class="faq-item">
+                <div class="q">模拟器支持多少条赔付线？</div>
+                <div class="a">通常提供 1 至 20 条可调线数，具体取决于所选主题配置。进入 <a href="https://zh-slotsimulator.com" style="color:#7a5f3a;">老虎机模拟器</a> 后可在设置面板查看当前最大值。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">免费旋转的触发机制是否与真实机台一致？</div>
+                <div class="a">模拟器采用通用概率模型，触发频率接近常见商用机台，但因未接入实际物理随机源，结果仅作参考。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">能否导出历史旋转数据？</div>
+                <div class="a">部分版本支持会话记录导出（CSV 格式），可在统计面板中找到导出按钮。数据仅供个人分析使用。</div>
+            </div>
+        </div>
+
+        <div class="link-sentence">
+            若希望直接体验，可前往 <a href="https://zh-slotsimulator.com">老虎机模拟器</a> 查看最新界面与功能说明。
+        </div>
+
+        <div class="footer-note">
+            页面索引版本 · 内容基于公开文档整理 · 模拟器本身不含任何真实赌注
+        </div>
+    </div>
+</body>
+</html>
